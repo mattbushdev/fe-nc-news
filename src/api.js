@@ -22,7 +22,11 @@ export const getTopics = async () => {
 };
 
 export const getComments = async (article_id) => {
-  console.log(article_id, "<-- API request");
   const { data } = await newsApi.get(`/articles/${article_id}/comments`);
   return data.comments;
+};
+
+export const getUser = async (username) => {
+  const { data } = await newsApi.get(`/users/${username}`);
+  return data.user;
 };
