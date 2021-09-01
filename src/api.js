@@ -30,3 +30,18 @@ export const getUser = async (username) => {
   const { data } = await newsApi.get(`/users/${username}`);
   return data.user;
 };
+
+export const patchVotes = async (article_id, increment) => {
+  const { data } = await newsApi.patch(`/articles/${article_id}`, {
+    inc_votes: increment,
+  });
+  return data.article;
+};
+
+export const postComment = async (article_id, name, comment) => {
+  const { data } = await newsApi.post(`/articles/${article_id}/comments`, {
+    username: name,
+    body: comment,
+  });
+  return data.comment;
+};
