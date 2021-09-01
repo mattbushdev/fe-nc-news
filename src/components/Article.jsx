@@ -1,51 +1,20 @@
-import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getArticle, patchVotes } from "../api";
 import CommentsList from "./CommentsList";
 import ExpandComments from "./ExpandComments";
 import ExpandAddComment from "./ExpandAddComment";
 import AddComment from "./AddComment";
+import { useVoteCount } from "../hooks/useVoteCount.jsx";
+import { useArticle } from "../hooks/useApi";
 
 const Article = () => {
-  const [article, setArticle] = useState({});
-  const [votesChange, setVotesChange] = useState(0);
-  const [hasErrored, setHasErrored] = useState(false);
   const { article_id } = useParams();
+  const { voteCount, incVotes, decVotes, hasErrored } =
+    useVoteCount(article_id);
+  const { article, isLoading } = useArticle(article_id);
 
-  const incVotes = () => {
-    setHasErrored(false);
-
-    setVotesChange((currVoteChange) => {
-      return currVoteChange + 1;
-    });
-
-    patchVotes(article_id, 1).catch(() => {
-      setHasErrored(true);
-      setVotesChange((currVoteChange) => {
-        return currVoteChange - 1;
-      });
-    });
-  };
-
-  const decVotes = () => {
-    setHasErrored(false);
-
-    setVotesChange((currVoteChange) => {
-      return currVoteChange - 1;
-    });
-
-    patchVotes(article_id, -1).catch(() => {
-      setHasErrored(true);
-      setVotesChange((currVoteChange) => {
-        return currVoteChange + 1;
-      });
-    });
-  };
-
-  useEffect(() => {
-    getArticle(article_id).then((article) => setArticle(article));
-  }, [article_id]);
-
+  if (isLoading) {
+    return <h3>Loading...</h3>;
+  }
   return (
     <section className="articles">
       {/* <img src="./" alt="article"></img> */}
@@ -67,7 +36,7 @@ const Article = () => {
       <div className="article__action">
         <p className="votes">
           {hasErrored && <p>Error, please try again later...</p>}
-          Votes: {article.votes + votesChange}
+          Votes: {article.votes + voteCount}
           <button onClick={incVotes} className="button__circle button__green">
             +
           </button>
@@ -77,7 +46,7 @@ const Article = () => {
         </p>
         <ExpandComments article={article}>
           <ExpandAddComment>
-            <AddComment />
+            <AddComment article_id={article_id} />
           </ExpandAddComment>
           <CommentsList article_id={article_id} />
         </ExpandComments>
