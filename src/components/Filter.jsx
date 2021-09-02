@@ -28,10 +28,8 @@ const Filter = ({ filters, setFilters }) => {
     getArticles(filters).then((articles) => setArticles(articles));
   }, [filters, setArticles]);
 
-  // console.log(filters);
-
   return (
-    <>
+    <div className="filter">
       <label>
         <select name="sort_by" id="sort_by-select" onChange={handleFilter}>
           <option value="created_at">Recent</option>
@@ -40,12 +38,17 @@ const Filter = ({ filters, setFilters }) => {
         </select>
       </label>
       <label>
-        <select name="order" id="order-select" onChange={handleOrder}>
+        <select
+          name="order"
+          id="order-select"
+          onChange={handleOrder}
+          className="order"
+        >
           <option value="desc">desc</option>
           <option value="asc">asc</option>
         </select>
       </label>
-    </>
+    </div>
   );
 };
 
