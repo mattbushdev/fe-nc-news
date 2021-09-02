@@ -1,5 +1,19 @@
 import { useEffect, useState } from "react";
-import { getArticle } from "../api";
+import { getArticle, getArticles } from "../api";
+
+export const useArticles = (filters) => {
+  const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getArticles(filters).then((articles) => {
+      setArticles(articles);
+      setIsLoading(false);
+    });
+  }, [filters]);
+
+  return { articles, setArticles, isLoading };
+};
 
 export const useArticle = (article_id) => {
   const [article, setArticle] = useState({});
