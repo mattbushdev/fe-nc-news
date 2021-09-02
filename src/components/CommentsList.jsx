@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getComments } from "../api";
 
-const CommentsList = ({ article_id }) => {
-  const [commentsList, setCommentsList] = useState([]);
-
+const CommentsList = ({ article_id, commentsList, setCommentsList }) => {
   useEffect(() => {
     getComments(article_id).then((comments) => setCommentsList(comments));
-  }, [article_id]);
+  }, [article_id, setCommentsList]);
 
   return (
     <div>
       {commentsList.map((comment) => {
         return (
-          <div>
+          <div key={comment.comment_id}>
             <p>
               <span className="span__color">{comment.author}</span>
               <span className="span__date">

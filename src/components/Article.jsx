@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import CommentsList from "./CommentsList";
 import ExpandComments from "./ExpandComments";
@@ -7,6 +8,7 @@ import { useVoteCount } from "../hooks/useVoteCount.jsx";
 import { useArticle } from "../hooks/useApi";
 
 const Article = () => {
+  const [commentsList, setCommentsList] = useState([]);
   const { article_id } = useParams();
   const { voteCount, incVotes, decVotes, hasErrored } =
     useVoteCount(article_id);
@@ -17,7 +19,6 @@ const Article = () => {
   }
   return (
     <section className="articles">
-      {/* <img src="./" alt="article"></img> */}
       <Link to={`/articles/${article.topic}`}>
         <button className="button__topic">{article.topic}</button>
       </Link>
@@ -46,9 +47,16 @@ const Article = () => {
         </p>
         <ExpandComments article={article}>
           <ExpandAddComment>
-            <AddComment article_id={article_id} />
+            <AddComment
+              article_id={article_id}
+              setCommentsList={setCommentsList}
+            />
           </ExpandAddComment>
-          <CommentsList article_id={article_id} />
+          <CommentsList
+            article_id={article_id}
+            commentsList={commentsList}
+            setCommentsList={setCommentsList}
+          />
         </ExpandComments>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { postComment } from "../api";
 
-const AddComment = ({ article_id }) => {
+const AddComment = ({ article_id, setCommentsList }) => {
   const [commentUsername, setCommentUsername] = useState("");
   const [commentBody, setCommentBody] = useState("");
   const [hasErrored, setHasErrored] = useState(false);
@@ -18,9 +18,15 @@ const AddComment = ({ article_id }) => {
     event.preventDefault();
     setHasErrored(false);
 
-    postComment(article_id, commentUsername, commentBody).catch(() => {
-      setHasErrored(true);
-    });
+    postComment(article_id, commentUsername, commentBody)
+      .then((postComment) => {
+        setCommentsList((currComment) => {
+          return [...currComment, postComment];
+        });
+      })
+      .catch(() => {
+        setHasErrored(true);
+      });
     setCommentUsername("");
     setCommentBody("");
   };
