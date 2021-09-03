@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { patchVotes } from "../api";
 
-export const useVoteCount = (article_id) => {
+export const useVoteCount = (id, patchFunction) => {
   const [voteCount, setVoteCount] = useState(0);
   const [hasErrored, setHasErrored] = useState(false);
 
@@ -12,7 +11,7 @@ export const useVoteCount = (article_id) => {
       return currVoteChange + 1;
     });
 
-    patchVotes(article_id, 1).catch(() => {
+    patchFunction(id, 1).catch(() => {
       setHasErrored(true);
       setVoteCount((currVoteChange) => {
         return currVoteChange - 1;
@@ -27,7 +26,7 @@ export const useVoteCount = (article_id) => {
       return currVoteChange - 1;
     });
 
-    patchVotes(article_id, -1).catch(() => {
+    patchFunction(id, -1).catch(() => {
       setHasErrored(true);
       setVoteCount((currVoteChange) => {
         return currVoteChange + 1;
