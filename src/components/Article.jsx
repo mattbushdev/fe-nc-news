@@ -12,18 +12,29 @@ import calendar from "../icons/calendar.svg";
 import coding from "../images/coding.jpg";
 import football from "../images/football.jpg";
 import cooking from "../images/cooking.jpg";
+import { patchVotes } from "../api";
 
 const Article = () => {
   const [commentsList, setCommentsList] = useState([]);
   const { article_id } = useParams();
-  const { voteCount, incVotes, decVotes, hasErrored } =
-    useVoteCount(article_id);
+  const { voteCount, incVotes, decVotes, hasErrored } = useVoteCount(
+    article_id,
+    patchVotes
+  );
   const { article, isLoading } = useArticle(article_id);
   const images = { coding, football, cooking };
 
   if (isLoading) {
     return <h3>Loading...</h3>;
   }
+
+  const convertTime = (time) => {
+    let date = new Date(time);
+    return (
+      date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
+    );
+  };
+
   return (
     <section className="articles">
       <img
@@ -38,10 +49,7 @@ const Article = () => {
         <span className="span__color-article">{article.author}</span>
         <span className="span__date-article">
           <img src={calendar} alt="calendar icon" className="calendar" />
-          {Date(article.created_at).substring(
-            0,
-            Date(article.created_at).length - 31
-          )}
+          {convertTime(article.created_at)}
         </span>
       </p>
       <br></br>
