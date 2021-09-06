@@ -78,10 +78,17 @@ const Voter = ({ id, votes, setState, patchFunction }) => {
           src={thumbup}
           alt="thumb up icon to up-vote"
           className="icon__thumb-up"
+          width="15"
+          height="15"
         />
       </button>
       <button onClick={decVotes} className="button__thumb-down">
-        <img src={thumbdown} alt="thumb down icon to down-vote" />
+        <img
+          src={thumbdown}
+          alt="thumb down icon to down-vote"
+          width="15"
+          height="15"
+        />
       </button>
       {hasVoted && <p className="vote__accept">vote accepted</p>}
     </>
