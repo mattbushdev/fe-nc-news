@@ -15,6 +15,8 @@ const ExpandComments = ({ children, article }) => {
           src={commentbubble}
           alt="comment bubble icon"
           className="comment-bubble"
+          width="15"
+          height="15"
         />
         {isOpen ? "Collapse Comments" : `${article.comment_count} Comments`}
       </button>
