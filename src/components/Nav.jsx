@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getTopics } from "../api";
-import Filter from "./Filter";
 
-const Nav = ({ filters, setFilters }) => {
+const Nav = ({ setFilters }) => {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
@@ -54,7 +53,6 @@ const Nav = ({ filters, setFilters }) => {
           );
         })}
       </nav>
-      <Filter filters={filters} setFilters={setFilters} />
     </>
   );
 };
