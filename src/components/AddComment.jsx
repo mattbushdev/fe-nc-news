@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { postComment } from "../api";
 
-const AddComment = ({ article_id, setCommentsList }) => {
-  const [commentUsername, setCommentUsername] = useState("");
+const AddComment = ({ article_id, setCommentsList, username }) => {
+  const [commentUsername, setCommentUsername] = useState(username);
   const [commentBody, setCommentBody] = useState("");
   const [hasErrored, setHasErrored] = useState(false);
+  const [commentPosted, setCommentPosted] = useState(false);
 
   const handleUsername = ({ target: { value } }) => {
     setCommentUsername(value);
@@ -19,9 +20,9 @@ const AddComment = ({ article_id, setCommentsList }) => {
     setHasErrored(false);
 
     postComment(article_id, commentUsername, commentBody)
-      .then((postComment) => {
+      .then((postedComment) => {
         setCommentsList((currComment) => {
-          return [...currComment, postComment];
+          return [...currComment, postedComment];
         });
       })
       .catch(() => {
@@ -29,21 +30,25 @@ const AddComment = ({ article_id, setCommentsList }) => {
       });
     setCommentUsername("");
     setCommentBody("");
+    setCommentPosted(true);
   };
 
   return (
     <form>
       <label>
+        username:
         <input
           id="comment-username"
           type="text"
           placeholder="username..."
           onChange={handleUsername}
+          value={commentUsername}
           required
         ></input>
       </label>
       <br></br>
       <label>
+        comment:
         <textarea
           id="commentBody"
           name="message"
@@ -52,17 +57,22 @@ const AddComment = ({ article_id, setCommentsList }) => {
           maxLength="500"
           placeholder="type comment..."
           onChange={handleCommentBody}
+          value={commentBody}
           required
         ></textarea>
       </label>
       {hasErrored && <p>Error, please try again later...</p>}
-      <button
-        type="submit"
-        className="button__post-comment"
-        onClick={handleSubmit}
-      >
-        Post
-      </button>
+      {commentPosted ? (
+        <p className="post-comment_accept">thanks, comment posted</p>
+      ) : (
+        <button
+          type="submit"
+          className="button__post-comment"
+          onClick={handleSubmit}
+        >
+          Post
+        </button>
+      )}
     </form>
   );
 };
