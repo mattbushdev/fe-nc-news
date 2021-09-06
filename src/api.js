@@ -45,3 +45,14 @@ export const postComment = async (article_id, name, comment) => {
   });
   return data.comment;
 };
+
+export const patchCommentVotes = async (comment_id, increment) => {
+  const { data } = await newsApi.patch(`/comments/${comment_id}`, {
+    inc_votes: increment,
+  });
+  return data.comment;
+};
+
+export const deleteComment = async (comment_id) => {
+  return await newsApi.delete(`/comments/${comment_id}`);
+};
