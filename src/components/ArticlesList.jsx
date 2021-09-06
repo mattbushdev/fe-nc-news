@@ -35,23 +35,23 @@ const ArticlesList = ({ user, filters, setFilters }) => {
                 key={article.article_id}
               >
                 <li className="articles__card">
-                  <div className="container__img">
+                  <div className="articles__container--img">
                     <img
                       src={images[article.topic]}
                       alt={`${article.topic} topic`}
                     />
                   </div>
-                  <div className="container__info">
-                    <p>
-                      <span className="span__color">{article.author}</span>
-                      <span className="span__title">{article.title}</span>
-                    </p>
+                  <div className="articles__container--info">
+                    <p className="articles__author">{article.author}</p>
+                    <p className="articles__title">{article.title}</p>
                     <div className="articles__footer">
                       <span className="articles__date">
                         <img
                           src={calendar}
                           alt="calendar icon"
                           className="calendar"
+                          width="12"
+                          height="12"
                         />
                         {convertTime(article.created_at)}
                       </span>
