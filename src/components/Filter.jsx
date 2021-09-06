@@ -9,7 +9,6 @@ const Filter = ({ filters, setFilters }) => {
     setFilters((currFilters) => {
       let newFilters = { ...currFilters };
       newFilters.sort_by = value;
-      console.log(newFilters, "filter");
 
       return newFilters;
     });
@@ -18,7 +17,6 @@ const Filter = ({ filters, setFilters }) => {
     setFilters((currFilters) => {
       let newFilters = { ...currFilters };
       newFilters.order = value;
-      console.log(newFilters, "order");
 
       return newFilters;
     });
