@@ -26,5 +26,5 @@ export const useArticle = (article_id) => {
     });
   }, [article_id]);
 
-  return { article, isLoading };
+  return { article, setArticle, isLoading };
 };
