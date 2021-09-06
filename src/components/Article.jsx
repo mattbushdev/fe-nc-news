@@ -4,7 +4,6 @@ import CommentsList from "./CommentsList";
 import ExpandComments from "./ExpandComments";
 import ExpandAddComment from "./ExpandAddComment";
 import AddComment from "./AddComment";
-// import { useVoteCount } from "../hooks/useVoteCount.jsx";
 import { useArticle } from "../hooks/useApi";
 import calendar from "../icons/calendar.svg";
 import coding from "../images/coding.jpg";
@@ -30,10 +29,7 @@ const Article = ({ username }) => {
 
   const convertTime = (time) => {
     let date = new Date(time);
-    return (
-      // date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
-      date.toDateString()
-    );
+    return date.toDateString();
   };
 
   return (
@@ -44,13 +40,20 @@ const Article = ({ username }) => {
           alt={`${article.topic} topic`}
           className="article__img"
         />
-        <Link to={`/articles/${article.topic}`}>
+        <Link to={`/articles/${article.topic}`} className="article__topic">
           <button className="button__topic">{article.topic}</button>
         </Link>
         <p className="article__header">
           <span className="span__color-article">{article.author}</span>
-          <span className="span__date-article">
-            <img src={calendar} alt="calendar icon" className="calendar" />
+
+          <span className="article__date">
+            <img
+              src={calendar}
+              alt="calendar icon"
+              className="calendar"
+              width="12"
+              height="12"
+            />
             {convertTime(article.created_at)}
           </span>
         </p>
