@@ -1,64 +1,66 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getComments } from "../api";
-import { useVoteCount } from "../hooks/useVoteCount.jsx";
 import { patchCommentVotes } from "../api";
+import Voter from "./Voter";
+import DeleteComment from "./DeleteComment";
 
-import thumbup from "../icons/thumb-up.svg";
-import thumbdown from "../icons/thumb-down.svg";
-
-const CommentsList = ({ article_id, commentsList, setCommentsList }) => {
-  // const { voteCount, incVotes, decVotes, hasErrored } =
-  //   useVoteCount(patchCommentVotes);
+const CommentsList = ({
+  article_id,
+  commentsList,
+  setCommentsList,
+  username,
+}) => {
+  const [votes, setVotes] = useState(0);
 
   useEffect(() => {
     getComments(article_id).then((comments) => setCommentsList(comments));
   }, [article_id, setCommentsList]);
 
+  const checkAuthor = (username, author) => {
+    if (username === author) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const convertTime = (time) => {
     let date = new Date(time);
-    return (
-      date.getHours() +
-      ":" +
-      date.getMinutes() +
-      " " +
-      date.getDate() +
-      "-" +
-      (date.getMonth() + 1) +
-      "-" +
-      date.getFullYear()
-    );
+    return date.toDateString();
   };
 
   return (
     <div>
       {commentsList.map((comment) => {
         return (
-          <div key={comment.comment_id}>
-            <p>
-              <span className="span__color">{comment.author}</span>
-              <span className="span__date">
+          <div key={comment.comment_id} className="comments__card">
+            <p className="comments__header">
+              <span className="comments__author">{comment.author}</span>
+              <span className="comments__date">
                 {convertTime(comment.created_at)}
               </span>
             </p>
-            <br></br>
-            <p>{comment.body}</p>
-            <p className="votes">
-              Votes: {comment.votes}
-              <button
-                // onClick={incVotes(comment.comment_id)}
-                className="button__thumb-up"
-              >
-                <img src={thumbup} alt="thumb up icon to up-vote" />
-              </button>
-              <button
-                // onClick={decVotes(comment.comment_id)}
-                className="button__thumb-down"
-              >
-                <img src={thumbdown} alt="thumb down icon to down-vote" />
-              </button>
-            </p>
-            {/* {hasErrored && <p>Error, please try again later...</p>} */}
-            {/* Votes: {comment.votes + voteCount} */}
+            <p className="comments__body">{comment.body}</p>
+            <div className="comments__actions">
+              <p className="comments__votes">
+                Votes: {comment.votes}
+                <Voter
+                  id={comment.comment_id}
+                  votes={votes}
+                  setState={setCommentsList}
+                  patchFunction={patchCommentVotes}
+                />
+              </p>
+              {checkAuthor(username, comment.author) ? (
+                <DeleteComment
+                  comment_id={comment.comment_id}
+                  article_id={article_id}
+                  commentAuthor={comment.author}
+                  username={username}
+                  setCommentsList={setCommentsList}
+                />
+              ) : null}
+            </div>
           </div>
         );
       })}
