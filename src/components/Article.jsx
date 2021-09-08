@@ -6,9 +6,9 @@ import ExpandAddComment from "./ExpandAddComment";
 import AddComment from "./AddComment";
 import { useArticle } from "../hooks/useApi";
 import calendar from "../icons/calendar.svg";
-import coding from "../images/coding.jpg";
-import football from "../images/football.jpg";
-import cooking from "../images/cooking.jpg";
+import coding from "../images/coding-large.jpg";
+import football from "../images/football-large.jpg";
+import cooking from "../images/cooking-large.jpg";
 import { patchVotes } from "../api";
 import Voter from "./Voter";
 
