@@ -28,7 +28,13 @@ const DeleteComment = ({
   return (
     <>
       <button onClick={handleDelete} className="button__comments-delete">
-        <img src={bin} width="20" height="20" alt="delete comment button" />
+        <img
+          src={bin}
+          width="20"
+          height="20"
+          alt="delete comment button"
+          className="button__comments-delete"
+        />
       </button>
       {hasErrored && <p>Error, please try again later...</p>}
     </>
