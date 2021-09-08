@@ -1,12 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = ({ username }) => {
+const Header = ({ user, username }) => {
   return (
     <header>
       <div className="login">
         <Link to={`/user/${username}`}>
-          <button className="button__user">grumpy19</button>
+          <button className="button__user">
+            <img
+              src={user.avatar_url}
+              alt={`${user.username} avatar`}
+              width="30"
+              height="30"
+            />
+          </button>
         </Link>
       </div>
       <div className="title">
