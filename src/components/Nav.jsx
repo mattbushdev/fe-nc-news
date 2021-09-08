@@ -30,18 +30,14 @@ const Nav = ({ setFilters }) => {
   return (
     <>
       <nav>
-        <Link to="/" className="nav__list">
+        <Link to="/">
           <button className="button__nav" onClick={handleAll}>
             All
           </button>
         </Link>
         {topics.map((topic) => {
           return (
-            <Link
-              to={`/articles/${topic.slug}`}
-              className="nav__list"
-              key={topic.slug}
-            >
+            <Link to={`/articles/${topic.slug}`} key={topic.slug}>
               <button
                 value={topic.slug}
                 className="button__nav"
