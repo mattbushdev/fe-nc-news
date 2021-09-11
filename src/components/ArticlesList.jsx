@@ -6,7 +6,7 @@ import cooking from "../images/cooking.jpg";
 import calendar from "../icons/calendar.svg";
 import Filter from "./Filter";
 
-const ArticlesList = ({ user, filters, setFilters }) => {
+const ArticlesList = ({ filters, setFilters }) => {
   const { articles, isLoading } = useArticles(filters);
   const images = { coding, football, cooking };
 
