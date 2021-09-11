@@ -152,7 +152,7 @@ select {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
 
 .button__enter {
@@ -162,6 +162,16 @@ select {
   border-radius: 4px;
   font-size: 1rem;
   padding: 5px;
+  margin-bottom: 2rem;
+}
+.button__choose-user {
+  color: #fd7860;
+  background-color: white;
+  border: 1px solid #fd7860;
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 5px;
+  margin-top: 1rem;
   margin-bottom: 2rem;
 }
 .button__login {
@@ -265,7 +275,7 @@ select {
   background-color: white;
   color: #3c2e53;
   float: right;
-  margin: 0.5rem 0.5rem 0rem 0rem;
+  margin: 0.5rem 0.5rem 0rem 0.25rem;
   font-size: 14px;
 }
 .button__topic {
