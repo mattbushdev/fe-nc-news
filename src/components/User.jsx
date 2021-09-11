@@ -1,5 +1,7 @@
-const User = ({ user, isLoggedIn, setIsLoggedIn }) => {
+import { Link } from "react-router-dom";
+const User = ({ user, setUsername, isLoggedIn, setIsLoggedIn }) => {
   const handleLogout = () => {
+    setUsername("");
     setIsLoggedIn(false);
   };
 
@@ -20,9 +22,11 @@ const User = ({ user, isLoggedIn, setIsLoggedIn }) => {
         <button className="user__button">Your comments</button>
       </div>
       <div className="user__logout">
-        <button className="user__button-logout" onClick={handleLogout}>
-          Logout
-        </button>
+        <Link to="/login">
+          <button className="user__button-logout" onClick={handleLogout}>
+            Logout
+          </button>
+        </Link>
       </div>
     </section>
   );

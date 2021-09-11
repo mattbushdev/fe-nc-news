@@ -1,36 +1,64 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Login = ({ isLoggedIn, setIsLoggedIn, username, setUsername }) => {
-  const [changedUsername, setChangedUsername] = useState("");
-  const handleEnter = () => {
+const Login = ({ setIsLoggedIn, setUsername, setUser }) => {
+  const handleJessLogin = () => {
+    setUsername("jessjelly");
+    setUser({
+      username: "jessjelly",
+      avatar_url:
+        "https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141",
+      name: "Jess Jelly",
+    });
     setIsLoggedIn(true);
   };
-  const handleUsername = ({ target: { value } }) => {
-    setChangedUsername(value);
-  };
-  const handleLogin = (event) => {
-    event.preventDefault();
-    setUsername(changedUsername);
+
+  const handleGrumpyLogin = () => {
+    setUsername("grumpy19");
+    setUser({
+      username: "grumpy19",
+      avatar_url:
+        "https://vignette.wikia.nocookie.net/mrmen/images/7/78/Mr-Grumpy-3A.PNG/revision/latest?cb=20170707233013",
+      name: "Paul Grump",
+    });
     setIsLoggedIn(true);
   };
+
   return (
     <section className="login__page">
-      <h2>Welcome back {username} </h2>
+      <h3>Choose User</h3>
       <Link to="/">
-        <button className="button__enter" onClick={handleEnter}>
-          Enter
+        <img
+          src="https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141"
+          alt="login as jessjelly"
+          width="200"
+          height="200"
+          onClick={handleJessLogin}
+        />
+        <button
+          value="login"
+          className="button__choose-user"
+          onClick={handleJessLogin}
+        >
+          jessjelly
         </button>
       </Link>
-      <h3>Not you? Enter your username below</h3>
-      <form>
-        <label>
-          <input onChange={handleUsername} placeholder="enter username"></input>
-        </label>
-        <button value="login" className="button__login" onClick={handleLogin}>
-          Login
+      <Link to="/">
+        <img
+          src="https://vignette.wikia.nocookie.net/mrmen/images/7/78/Mr-Grumpy-3A.PNG/revision/latest?cb=20170707233013"
+          alt="login as grumpy19"
+          width="200"
+          height="200"
+          onClick={handleGrumpyLogin}
+        />
+        <button
+          value="login"
+          className="button__choose-user"
+          onClick={handleGrumpyLogin}
+        >
+          grumpy19
         </button>
-      </form>
+      </Link>
     </section>
   );
 };
