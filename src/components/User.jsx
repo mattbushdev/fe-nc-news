@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const User = ({ user, setUsername, isLoggedIn, setIsLoggedIn }) => {
+const User = ({ user, setUsername, setIsLoggedIn }) => {
   const handleLogout = () => {
     setUsername("");
     setIsLoggedIn(false);
