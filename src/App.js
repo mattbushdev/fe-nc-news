@@ -18,11 +18,11 @@ function App() {
     sort_by: null,
     order: null,
   });
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
-    getUser(username).then((user) => {
-      setUser(user);
+    getUser(username).then((userObj) => {
+      setUser(userObj);
     });
   }, [username]);
 
@@ -37,23 +37,15 @@ function App() {
               <Route exact path="/user/:username">
                 <User
                   user={user}
-                  isLoggedIn={isLoggedIn}
+                  setUsername={setUsername}
                   setIsLoggedIn={setIsLoggedIn}
                 />
               </Route>
               <Route exact path="/">
-                <ArticlesList
-                  user={user}
-                  filters={filters}
-                  setFilters={setFilters}
-                />
+                <ArticlesList filters={filters} setFilters={setFilters} />
               </Route>
               <Route exact path="/articles/:topic">
-                <ArticlesList
-                  user={user}
-                  filters={filters}
-                  setFilters={setFilters}
-                />
+                <ArticlesList filters={filters} setFilters={setFilters} />
               </Route>
               <Route exact path="/article/:article_id">
                 <Article username={username} />
@@ -61,12 +53,13 @@ function App() {
             </Switch>
           </>
         ) : (
-          <Login
-            username={username}
-            setUsername={setUsername}
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-          />
+          <Route exact path="/login">
+            <Login
+              setUser={setUser}
+              setUsername={setUsername}
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          </Route>
         )}
         <Footer />
       </div>
