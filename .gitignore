@@ -10,6 +10,8 @@
 
 # production
 /build
+/.netlify
+
 
 # misc
 .DS_Store
@@ -18,12 +20,10 @@
 .env.test.local
 .env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
 .notes.md
 .nc-news-checklist.md
 src/images/wireframe-v2.png
 
-.netlify
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
