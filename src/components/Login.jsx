@@ -34,6 +34,7 @@ const Login = ({ setIsLoggedIn, setUsername, setUser }) => {
           height="200"
           onClick={handleJessLogin}
         />
+        <br></br>
         <button
           value="login"
           className="button__choose-user"
@@ -50,6 +51,7 @@ const Login = ({ setIsLoggedIn, setUsername, setUser }) => {
           height="200"
           onClick={handleGrumpyLogin}
         />
+        <br></br>
         <button
           value="login"
           className="button__choose-user"
