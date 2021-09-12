@@ -155,15 +155,6 @@ select {
   margin-top: 2.5rem;
 }
 
-.button__enter {
-  color: #fd7860;
-  background-color: white;
-  border: 1px solid #fd7860;
-  border-radius: 4px;
-  font-size: 1rem;
-  padding: 5px;
-  margin-bottom: 2rem;
-}
 .button__choose-user {
   color: #fd7860;
   background-color: white;
@@ -262,11 +253,6 @@ select {
   color: #fd7860;
   font-size: 0.8rem;
   font-weight: bold;
-}
-
-.button__circle {
-  border-radius: 50%;
-  background: none;
 }
 
 .button__user {
