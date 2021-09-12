@@ -24,11 +24,6 @@ const User = ({ user, setUsername, setIsLoggedIn }) => {
           alt="user profile"
         ></img>
       </div>
-
-      <div className="user__actions">
-        <button className="user__button">Your articles</button>
-        <button className="user__button">Your comments</button>
-      </div>
       <div className="user__logout">
         <Link to="/login">
           <button className="user__button-logout" onClick={handleLogout}>
