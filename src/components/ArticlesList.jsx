@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 import { useArticles } from "../hooks/useApi";
 import coding from "../images/coding.jpg";
 import football from "../images/football.jpg";
 import cooking from "../images/cooking.jpg";
 import calendar from "../icons/calendar.svg";
 import Filter from "./Filter";
+import Error from "./Error";
 
 const ArticlesList = ({ filters, setFilters }) => {
   const { articles, isLoading } = useArticles(filters);
   const images = { coding, football, cooking };
+  const { topic } = useParams();
 
   const convertTime = (time) => {
     let date = new Date(time);
@@ -16,6 +19,10 @@ const ArticlesList = ({ filters, setFilters }) => {
       date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
     );
   };
+
+  if (!["coding", "football", "cooking", undefined].includes(topic)) {
+    return <Error />;
+  }
 
   if (isLoading)
     return (
