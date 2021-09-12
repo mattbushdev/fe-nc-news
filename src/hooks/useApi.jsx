@@ -18,13 +18,18 @@ export const useArticles = (filters) => {
 export const useArticle = (article_id) => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [articleIdExists, setArticleIdExists] = useState(true);
 
   useEffect(() => {
-    getArticle(article_id).then((article) => {
-      setArticle(article);
-      setIsLoading(false);
-    });
+    getArticle(article_id)
+      .then((article) => {
+        setArticle(article);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        if (err) setArticleIdExists(false);
+      });
   }, [article_id]);
 
-  return { article, setArticle, isLoading };
+  return { article, setArticle, isLoading, articleIdExists };
 };

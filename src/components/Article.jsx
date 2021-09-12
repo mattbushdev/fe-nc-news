@@ -11,14 +11,23 @@ import football from "../images/football-large.jpg";
 import cooking from "../images/cooking-large.jpg";
 import { patchVotes } from "../api";
 import Voter from "./Voter";
+import Error from "./Error";
 
 const Article = ({ username }) => {
   const [commentsList, setCommentsList] = useState([]);
   const { article_id } = useParams();
   const [votes, setVotes] = useState(0);
+  const { article, setArticle, isLoading, articleIdExists } =
+    useArticle(article_id);
 
-  const { article, setArticle, isLoading } = useArticle(article_id);
   const images = { coding, football, cooking };
+
+  const convertTime = (time) => {
+    let date = new Date(time);
+    return date.toDateString();
+  };
+
+  if (!articleIdExists) return <Error />;
 
   if (isLoading)
     return (
@@ -26,11 +35,6 @@ const Article = ({ username }) => {
         <div className="loading__wheel"></div>
       </section>
     );
-
-  const convertTime = (time) => {
-    let date = new Date(time);
-    return date.toDateString();
-  };
 
   return (
     <>
