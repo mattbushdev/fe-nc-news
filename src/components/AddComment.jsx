@@ -6,6 +6,7 @@ const AddComment = ({ article_id, setCommentsList, username }) => {
   const [commentBody, setCommentBody] = useState("");
   const [hasErrored, setHasErrored] = useState(false);
   const [commentPosted, setCommentPosted] = useState(false);
+  const [noCommentBody, setNoCommentBody] = useState(false);
 
   const handleUsername = ({ target: { value } }) => {
     setCommentUsername(value);
@@ -17,20 +18,23 @@ const AddComment = ({ article_id, setCommentsList, username }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setHasErrored(false);
 
-    postComment(article_id, commentUsername, commentBody)
-      .then((postedComment) => {
-        setCommentsList((currComment) => {
-          return [...currComment, postedComment];
+    if (commentBody.length > 0) {
+      setHasErrored(false);
+      postComment(article_id, commentUsername, commentBody)
+        .then((postedComment) => {
+          setCommentsList((currComment) => {
+            return [...currComment, postedComment];
+          });
+        })
+        .catch(() => {
+          setHasErrored(true);
         });
-      })
-      .catch(() => {
-        setHasErrored(true);
-      });
-    setCommentUsername("");
-    setCommentBody("");
-    setCommentPosted(true);
+      setCommentBody("");
+      setCommentPosted(true);
+    } else {
+      setNoCommentBody(true);
+    }
   };
 
   return (
@@ -61,6 +65,7 @@ const AddComment = ({ article_id, setCommentsList, username }) => {
           required
         ></textarea>
       </label>
+      {noCommentBody && <p>Error, please type a comment</p>}
       {hasErrored && <p>Error, please try again later...</p>}
       {commentPosted ? (
         <p className="post-comment_accept">thanks, comment posted</p>
