@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
+import { useParams } from "react-router";
+import Error from "./Error";
 const User = ({ user, setUsername, setIsLoggedIn }) => {
   const handleLogout = () => {
     setUsername("");
     setIsLoggedIn(false);
   };
+
+  const { username } = useParams();
+
+  if (!["jessjelly", "grumpy19"].includes(username)) {
+    return <Error />;
+  }
 
   return (
     <section className="user__page">
