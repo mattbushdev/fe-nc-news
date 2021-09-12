@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { getUser } from "./api";
 import Login from "./components/Login";
 import Footer from "./components/Footer";
+import Error from "./components/Error";
 
 function App() {
   const [user, setUser] = useState({});
@@ -49,6 +50,9 @@ function App() {
               </Route>
               <Route exact path="/article/:article_id">
                 <Article username={username} />
+              </Route>
+              <Route path="*">
+                <Error />
               </Route>
             </Switch>
           </>
