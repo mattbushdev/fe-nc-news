@@ -25,3 +25,5 @@ yarn-error.log*
 .notes.md
 .nc-news-checklist.md
 src/images/wireframe-v2.png
+
+.netlify
