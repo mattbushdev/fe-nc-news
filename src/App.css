@@ -115,10 +115,11 @@ input {
 }
 
 select {
-  border: 1px solid #8b92a2;
+  border: none;
   border-radius: 6px;
   background-color: white;
   margin-right: 0.5rem;
+  color: #8b92a2;
 }
 .loading {
   display: flex;
@@ -253,7 +254,7 @@ select {
 }
 
 .order {
-  color: #192647;
+  color: #8b92a2;
 }
 
 .span__color-article {
