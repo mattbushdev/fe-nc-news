@@ -57,13 +57,22 @@ function App() {
             </Switch>
           </>
         ) : (
-          <Route exact path="/login">
-            <Login
-              setUser={setUser}
-              setUsername={setUsername}
-              setIsLoggedIn={setIsLoggedIn}
-            />
-          </Route>
+          <Switch>
+            <Route exact path="/">
+              <Login
+                setUser={setUser}
+                setUsername={setUsername}
+                setIsLoggedIn={setIsLoggedIn}
+              />
+            </Route>
+            <Route exact path="/login">
+              <Login
+                setUser={setUser}
+                setUsername={setUsername}
+                setIsLoggedIn={setIsLoggedIn}
+              />
+            </Route>
+          </Switch>
         )}
         <Footer />
       </div>
