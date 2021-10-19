@@ -24,6 +24,7 @@ header {
   justify-content: flex-end;
   color: white;
   background-color: #192647;
+  padding: 1% 1% 0% 0%;
 }
 .title {
   display: flex;
@@ -154,7 +155,7 @@ select {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 2.5rem;
+  height: 80vh;
 }
 
 .button__choose-user {
@@ -167,12 +168,13 @@ select {
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
+
 .button__login {
   color: #fd7860;
   background-color: white;
   border: 1px solid #fd7860;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 1rem;
   padding: 2px;
 }
 
@@ -181,7 +183,7 @@ select {
   background-color: #fd7860;
   border: 1px solid #fd7860;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 1rem;
   padding: 2px;
 }
 
@@ -711,6 +713,17 @@ select {
     transition: all 0.2s ease-out;
   }
   .button__nav--select:hover {
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px rgb(188 194 208 / 40%);
+  }
+  .button__choose-user {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    transition: all 0.2s ease-out;
+  }
+
+  .button__choose-user:hover {
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
     box-shadow: 0 10px 15px rgb(188 194 208 / 40%);
