@@ -42,8 +42,8 @@ const Filter = ({ filters, setFilters }) => {
           onChange={handleOrder}
           className="order"
         >
-          <option value="desc">desc</option>
-          <option value="asc">asc</option>
+          <option value="desc">Most</option>
+          <option value="asc">Least</option>
         </select>
       </label>
     </div>
