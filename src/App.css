@@ -67,8 +67,8 @@ nav {
   border-top-left-radius: 8px;
   background-color: #f7f7f7;
   height: 10vh;
-  margin-left: 5%;
-  padding-left: 1rem;
+  margin-left: 10%;
+  margin-right: 10%;
   overflow: auto;
   white-space: nowrap;
 }
@@ -125,6 +125,7 @@ select {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 70vh;
 }
 
 .loading__wheel {
@@ -187,6 +188,7 @@ select {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 70vh;
 }
 
 .user__avatar {
@@ -233,7 +235,7 @@ select {
   border: 1px solid #ffffff;
   background-color: #ffffff;
   border-radius: 14px;
-  font-size: 18px;
+  font-size: 1.2rem;
   text-transform: capitalize;
   padding: 8px;
   margin-right: 1rem;
@@ -247,8 +249,7 @@ select {
 .filter {
   color: #192647;
   background-color: #f7f7f7;
-  margin-left: 5%;
-  padding-left: 1rem;
+  margin-left: 10%;
 }
 
 .order {
@@ -318,7 +319,7 @@ select {
   display: flex;
   flex-direction: column;
   background-color: #f7f7f7;
-  padding: 1rem;
+  margin: 5% 10% 5% 10%;
 }
 
 .articles__list {
@@ -406,12 +407,19 @@ select {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 4px 20px #a5b0d033;
-  width: 90%;
+  width: 100%;
   height: 150px;
-  margin-left: 5%;
-  margin-bottom: 1rem;
+  margin-bottom: 5%;
   text-align: left;
   font-size: 0.8rem;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  transition: all 0.2s ease-out;
+}
+.articles__card:hover {
+  -webkit-transform: translateY(-4px);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgb(188 194 208 / 40%);
 }
 
 .error__card {
@@ -525,7 +533,7 @@ select {
   flex-direction: row;
   flex: 4;
   align-items: flex-start;
-  color: #8b92a2;
+  color: #fd7860;
   font-size: 16px;
   border: none;
   background-color: #f7f7f7;
@@ -606,11 +614,7 @@ select {
 
 @media only screen and (min-width: 750px) {
   .articles {
-    display: flex;
-    flex-direction: column;
-    background-color: #f7f7f7;
-    margin-right: 5rem;
-    margin-left: 5rem;
+    margin: 5% 15% 5% 15%;
   }
 
   .articles__card {
@@ -622,16 +626,17 @@ select {
   .articles__vote {
     font-size: 0.9rem;
   }
-  .filter {
-    margin-left: 8rem;
-  }
+
   h1 {
     font-size: 2.2rem;
   }
-  nav {
-    margin-right: 8rem;
-    margin-left: 8rem;
+
+  nav,
+  .filter {
+    margin-right: 15%;
+    margin-left: 15%;
   }
+
   form,
   input,
   select {
@@ -645,8 +650,7 @@ select {
 
 @media only screen and (min-width: 1025px) {
   .articles {
-    margin-right: 10rem;
-    margin-left: 10rem;
+    margin: 2% 25% 2% 25%;
   }
 
   .articles__card {
@@ -660,7 +664,7 @@ select {
   }
 
   .filter {
-    margin-left: 13.5rem;
+    margin-left: 25%;
   }
 
   h1 {
@@ -668,8 +672,8 @@ select {
   }
 
   nav {
-    margin-right: 13.5rem;
-    margin-left: 13.5rem;
+    margin-right: 25%;
+    margin-left: 25%;
   }
 
   form,
