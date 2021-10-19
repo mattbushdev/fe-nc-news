@@ -28,28 +28,26 @@ const Nav = ({ setFilters }) => {
   };
 
   return (
-    <>
-      <nav>
-        <Link to="/">
-          <button className="button__nav" onClick={handleAll}>
-            All
-          </button>
-        </Link>
-        {topics.map((topic) => {
-          return (
-            <Link to={`/articles/${topic.slug}`} key={topic.slug}>
-              <button
-                value={topic.slug}
-                className="button__nav"
-                onClick={handleTopic}
-              >
-                {topic.slug}
-              </button>
-            </Link>
-          );
-        })}
-      </nav>
-    </>
+    <nav>
+      <Link to="/">
+        <button className="button__nav" onClick={handleAll}>
+          All
+        </button>
+      </Link>
+      {topics.map((topic) => {
+        return (
+          <Link to={`/articles/${topic.slug}`} key={topic.slug}>
+            <button
+              value={topic.slug}
+              className="button__nav"
+              onClick={handleTopic}
+            >
+              {topic.slug}
+            </button>
+          </Link>
+        );
+      })}
+    </nav>
   );
 };
 
