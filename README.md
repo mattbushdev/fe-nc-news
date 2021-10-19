@@ -1,4 +1,4 @@
-# NC News
+# NC News Web App
 
 Northcoders (NC) News is a project built for the purpose of providing a frontend architecture to the NC News Service API that I built in a previous project. The intention of this React application is to mimic the building of a real world frontend news site.
 
