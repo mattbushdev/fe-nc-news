@@ -1,6 +1,6 @@
 # NC News Web App
 
-Northcoders (NC) News is a project built for the purpose of providing a frontend architecture to the NC News Service API that I built in a previous project. The intention of this React application is to mimic the building of a real world frontend news site.
+Northcoders (NC) News is a project built for the purpose of providing a frontend architecture to the NC News API that I built in a previous project. The intention of this React application is to mimic the building of a real world frontend news site.
 
 ## Table of contents
 
@@ -16,7 +16,7 @@ To take a look at NC News click [here](https://nc-news-service.netlify.app/)
 To view the backend:
 
 - repo [here](https://github.com/mattbushdev/be-nc-news)
-- API [here](https://nc-news-service-backend.herokuapp.com/api)
+- API [here](https://nc-news-api.azurewebsites.net/api)
 
 ## How to use
 
